@@ -11,7 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SelectionModel } from '@angular/cdk/collections';
 
 export type TreeData = {
-  name: String;
+  name: string;
 };
 
 export interface TreeNode<T extends TreeData> {

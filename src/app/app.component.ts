@@ -3,9 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { TreeSelectComponent } from './components/tree-select/tree-select.component';
 
 import { TreeNode } from './components/tree-select/tree-select.component';
+import { PRODUCT_TREE } from './utils';
 
 type Ship = {
-  name: String;
+  name: string;
 };
 
 const SHIP_DATA: TreeNode<Ship>[] = [
@@ -61,4 +62,5 @@ export class AppComponent {
 
   shipData = SHIP_DATA;
   foodData = FOOD_DATA;
+  productData = PRODUCT_TREE;
 }
