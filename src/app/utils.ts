@@ -7,6 +7,18 @@ type FlatNode = {
   mainProduct: string;
 };
 
+type ProductTree = {
+  region: string;
+  subProducts: {
+    subProduct: string;
+    mainProducts: string[];
+  }[];
+};
+
+export type TreeNodeData = {
+  name: string;
+};
+
 const flatNodes: FlatNode[] = [
   {
     region: 'Region A',
@@ -30,7 +42,7 @@ const flatNodes: FlatNode[] = [
   },
 ];
 
-const groupByRegionThenSubProduct = (nodes: FlatNode[]) =>
+const groupByRegionThenSubProduct = (nodes: FlatNode[]): ProductTree[] =>
   _.chain(nodes)
     .groupBy('region')
     .map((subProducts, region) => ({
@@ -45,26 +57,9 @@ const groupByRegionThenSubProduct = (nodes: FlatNode[]) =>
     }))
     .value();
 
-type ProductTree = {
-  region: string;
-  subProducts: {
-    subProduct: string;
-    mainProducts: string[];
-  }[];
-};
+const productData = groupByRegionThenSubProduct(flatNodes);
 
-const productData: ProductTree[] = groupByRegionThenSubProduct(flatNodes);
-
-export type TreeData = {
-  name: string;
-};
-
-const convertToTreeNode = (
-  tree: {
-    region: string;
-    subProducts: { subProduct: string; mainProducts: string[] }[];
-  }[],
-): TreeNode<TreeData>[] =>
+const convertToTreeNode = (tree: ProductTree[]): TreeNode<TreeNodeData>[] =>
   _.map(tree, (node) => ({
     data: { name: node.region },
     children: _.map(node.subProducts, (subProduct) => ({
@@ -75,5 +70,4 @@ const convertToTreeNode = (
     })),
   }));
 
-export const PRODUCT_TREE: TreeNode<{ name: string }>[] =
-  convertToTreeNode(productData);
+export const PRODUCT_TREE: TreeNode<TreeNodeData>[] = convertToTreeNode(productData);
