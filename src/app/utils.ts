@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { TreeNode } from './components/tree-select/tree-select.component';
+import { TreeNode } from './components/tree-select/tree-select.model';
 
 type FlatNode = {
   region: string;

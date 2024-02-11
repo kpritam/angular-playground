@@ -1,10 +1,10 @@
 <div>
   <h2>Ships & Brands</h2>
-  <app-tree-select [data]="shipData"></app-tree-select>
+  <app-tree-select [data]="shipData" (selectionChange)="onChange($event)"></app-tree-select>
 </div>
 <div>
   <h2>Food</h2>
-  <app-tree-select [data]="foodData"></app-tree-select>
+  <app-tree-select [data]="foodData" (selectionChange)="onChange($event)"></app-tree-select>
 </div>
 
-<app-tree-select [data]="productData"></app-tree-select>
+<app-tree-select [data]="productData" (selectionChange)="onChange($event)"></app-tree-select>

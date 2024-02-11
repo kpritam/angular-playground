@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TreeSelectComponent } from './components/tree-select/tree-select.component';
-
-import { TreeNode } from './components/tree-select/tree-select.component';
 import { PRODUCT_TREE } from './utils';
+import { TreeSelectComponent } from './components/tree-select/tree-select.component';
+import { TreeNode, FlatTreeNode } from './components/tree-select/tree-select.model';
 
 type Ship = {
   name: string;
+  fullName?: string;
 };
 
 const SHIP_DATA: TreeNode<Ship>[] = [
   {
     data: { name: 'Norwegian' },
-    children: [{ data: { name: 'Bliss' } }, { data: { name: 'America' } }],
+    children: [
+      { data: { name: 'Bliss' } },
+      { data: { name: 'America', fullName: 'Pride Of America' } },
+    ],
   },
   {
     data: { name: 'Regent' },
@@ -34,17 +37,11 @@ const FOOD_DATA: TreeNode<{ name: string }>[] = [
     children: [
       {
         data: { name: 'Green' },
-        children: [
-          { data: { name: 'Broccoli' } },
-          { data: { name: 'Brussels sprouts' } },
-        ],
+        children: [{ data: { name: 'Broccoli' } }, { data: { name: 'Brussels sprouts' } }],
       },
       {
         data: { name: 'Orange' },
-        children: [
-          { data: { name: 'Pumpkins' } },
-          { data: { name: 'Carrots' } },
-        ],
+        children: [{ data: { name: 'Pumpkins' } }, { data: { name: 'Carrots' } }],
       },
     ],
   },
@@ -63,4 +60,8 @@ export class AppComponent {
   shipData = SHIP_DATA;
   foodData = FOOD_DATA;
   productData = PRODUCT_TREE;
+
+  onChange(data: FlatTreeNode<{ name: string }>[]) {
+    console.table(data);
+  }
 }
