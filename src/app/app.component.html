@@ -1,10 +1,34 @@
-<div>
-  <h2>Ships & Brands</h2>
-  <app-tree-select [data]="shipData" (selectionChange)="onChange($event)"></app-tree-select>
-</div>
-<div>
-  <h2>Food</h2>
-  <app-tree-select [data]="foodData" (selectionChange)="onChange($event)"></app-tree-select>
-</div>
+<div class="app-container">
+  <app-table></app-table>
+  <div>
+    <h2>Ships & Brands</h2>
+    <app-tree-select [data]="shipData" (selectionChange)="onChange($event)"></app-tree-select>
+  </div>
+  <div>
+    <h2>Food</h2>
+    <app-tree-select [data]="foodData" (selectionChange)="onChange($event)"></app-tree-select>
+  </div>
 
-<app-tree-select [data]="productData" (selectionChange)="onChange($event)"></app-tree-select>
+  <app-tree-select [data]="productData" (selectionChange)="onChange($event)"></app-tree-select>
+
+
+  <h1>Dropdown</h1>
+
+  <div class="tree-dropdown">
+    <mat-form-field appearance="outline" class="tree-select-dropdown">
+      <mat-label>Food</mat-label>
+      <mat-select panelWidth="300px">
+        <mat-option disabled class="disable-action">
+          <mat-form-field appearance="outline"
+            class="searchable-dropdown" subscriptSizing="dynamic">
+            <mat-icon matPrefix>search</mat-icon>
+            <mat-label>Search</mat-label>
+            <input (keyup)="filterValues()" [(ngModel)]="searchValue" matInput />
+          </mat-form-field>
+
+        </mat-option>
+        <app-tree-select [data]="foodData" (selectionChange)="onChange($event)"></app-tree-select>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

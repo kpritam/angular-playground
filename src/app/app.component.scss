@@ -1,0 +1,39 @@
+:host {
+  .app-container {
+    display: grid;
+
+
+    .tree-dropdown {
+      width:300px;
+
+      .tree-select-field {
+        padding-left: 20px;
+      }
+
+      .searchable-dropdown {
+        width: calc(100% - 16px);
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 8px;
+      }
+
+      .searchable-dropdown-container {
+        width: 100%;
+
+        .dropdown-label {
+          padding-left: 14px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-option.mdc-list-item--disabled {
+    min-height: 0;
+  }
+
+  .mat-mdc-floating-label {
+    padding-left: 10px;
+  }
+}

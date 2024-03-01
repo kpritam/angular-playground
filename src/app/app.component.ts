@@ -3,6 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { PRODUCT_TREE } from './utils';
 import { TreeSelectComponent } from './components/tree-select/tree-select.component';
 import { TreeNode, FlatTreeNode } from './components/tree-select/tree-select.model';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { TableComponent } from './components/table/table.component';
 
 type Ship = {
   name: string;
@@ -50,7 +56,7 @@ const FOOD_DATA: TreeNode<{ name: string }>[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TreeSelectComponent],
+  imports: [TableComponent, RouterOutlet, MatIconModule, TreeSelectComponent, MatFormFieldModule, MatSelectModule, MatInputModule, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -64,4 +70,12 @@ export class AppComponent {
   onChange(data: FlatTreeNode<{ name: string }>[]) {
     console.table(data);
   }
+
+  searchControl = new FormControl('');
+
+  filterValues() {
+
+  }
+
+  searchValue: string = "";
 }
