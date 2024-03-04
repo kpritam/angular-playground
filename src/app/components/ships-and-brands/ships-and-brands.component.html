@@ -1,0 +1,7 @@
+<ag-tree-select
+  [rowData]="rowData | async"
+  [getDataPath]="getDataPath"
+  [showDropdown]="showDropdown"
+  dropdownLabel="Ships & Brands"
+  (onRowSelectionChange)="onRowSelectionChange($event)"
+></ag-tree-select>

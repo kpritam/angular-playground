@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { TableComponent } from './components/table/table.component';
+import { ShipsAndBrandsComponent } from './components/ships-and-brands/ships-and-brands.component';
 
 type Ship = {
   name: string;
@@ -56,9 +56,20 @@ const FOOD_DATA: TreeNode<{ name: string }>[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TableComponent, RouterOutlet, MatIconModule, TreeSelectComponent, MatFormFieldModule, MatSelectModule, MatInputModule, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  imports: [
+    ShipsAndBrandsComponent,
+    RouterOutlet,
+    MatIconModule,
+    TreeSelectComponent,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppComponent,
+  ],
 })
 export class AppComponent {
   title = 'angular-playground';
@@ -73,9 +84,7 @@ export class AppComponent {
 
   searchControl = new FormControl('');
 
-  filterValues() {
+  filterValues() {}
 
-  }
-
-  searchValue: string = "";
+  searchValue: string = '';
 }

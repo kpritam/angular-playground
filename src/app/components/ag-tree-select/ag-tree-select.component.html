@@ -1,0 +1,20 @@
+<ng-container *ngIf="showDropdown; else agTreeSelect">
+  <mat-form-field class="ag-tree-select-dropdown" appearance="outline">
+    <mat-label>{{ dropdownLabel }}</mat-label>
+    <mat-select [placeholder]="dropdownPlaceholder()" panelClass="tree-select-panel">
+      <mat-option disabled class="disable-action"> </mat-option>
+      <ng-container *ngTemplateOutlet="agTreeSelect"></ng-container>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-template #agTreeSelect>
+  <mat-form-field class="search" appearance="outline" subscriptSizing="dynamic">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput placeholder="Search" [formControl]="searchControl" />
+  </mat-form-field>
+  <ag-grid-angular
+    [class]="['tree-select-grid', 'ag-theme-material']"
+    [gridOptions]="gridOptions"
+  ></ag-grid-angular>
+</ng-template>

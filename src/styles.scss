@@ -1,6 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
-/* Core Grid CSS */
-@import 'ag-grid-community/styles/ag-grid.css';
-/* Quartz Theme Specific CSS */
-@import 'ag-grid-community/styles/ag-theme-quartz.css';
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
+@import "ag-grid-community/styles/ag-theme-balham.css";
+@import "ag-grid-community/styles/ag-theme-material.css";
+
+.tree-select-panel {
+  box-sizing: border-box;
+  padding: 0.5rem !important;
+
+  .search {
+    width: 100%;
+  }
+}
+
+.tree-select-grid {
+  .ag-root-wrapper {
+    border: none;
+  }
+
+  .ag-header {
+    border: none;
+  }
+
+  .ag-row.tree-select-row {
+    border: none !important;
+
+    &.ag-row-selected::before {
+      background-color: white;
+    }
+  }
+
+  .ag-cell {
+    padding-left: 0;
+  }
+}
+
+.ag-theme-material {
+  --ag-font-size: 14px;
+  --ag-side-button-selected-background-color: #dceef5;
+  --ag-selected-tab-underline-color: #dceef5;
+  --ag-side-bar-panel-width: 250px;
+  --ag-checkbox-checked-color: #0071a6;
+  --ag-checkbox-indeterminate-color: #0071a6;
+
+  .ag-selection-checkbox {
+    margin: 0;
+  }
+
+  .ag-group-checkbox {
+    margin-right: 1rem;
+  }
+
+  .ag-group-expanded,
+  .ag-group-contracted {
+    margin-right: 1rem;
+  }
+
+  .ag-row-group-leaf-indent {
+    margin-left: 2rem;
+  }
+
+  .ag-checkbox-input {
+    cursor: pointer;
+  }
+}
