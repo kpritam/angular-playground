@@ -1,5 +1,5 @@
 <ng-container *ngIf="showDropdown; else agTreeSelect">
-  <mat-form-field class="ag-tree-select-dropdown" appearance="outline">
+  <mat-form-field class="ag-tree-select-dropdown" appearance="outline" [floatLabel]="floatLabel()">
     <mat-label>{{ dropdownLabel }}</mat-label>
     <mat-select [placeholder]="dropdownPlaceholder()" panelClass="tree-select-panel">
       <mat-option disabled class="disable-action"> </mat-option>

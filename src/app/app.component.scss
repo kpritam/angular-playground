@@ -5,10 +5,6 @@
     grid-auto-flow: row;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    .ships-dropdown {
-      min-width: 300px;
-    }
-
     .tree-dropdown {
       width: 300px;
 
@@ -31,15 +27,5 @@
         }
       }
     }
-  }
-}
-
-::ng-deep {
-  .mat-mdc-option.mdc-list-item--disabled {
-    min-height: 0;
-  }
-
-  .mat-mdc-floating-label {
-    padding-left: 10px;
   }
 }

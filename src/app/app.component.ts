@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewChildren } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PRODUCT_TREE } from './utils';
 import { TreeSelectComponent } from './components/tree-select/tree-select.component';
@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ShipsAndBrandsComponent } from './components/ships-and-brands/ships-and-brands.component';
+import { AgRegionsAndProductsComponent } from './components/ag-regions-and-products/ag-regions-and-products.component';
+import { MatButtonModule } from '@angular/material/button';
 
 type Ship = {
   name: string;
@@ -62,6 +64,7 @@ const FOOD_DATA: TreeNode<{ name: string }>[] = [
     ShipsAndBrandsComponent,
     RouterOutlet,
     MatIconModule,
+    MatButtonModule,
     TreeSelectComponent,
     MatFormFieldModule,
     MatSelectModule,
@@ -69,6 +72,7 @@ const FOOD_DATA: TreeNode<{ name: string }>[] = [
     FormsModule,
     ReactiveFormsModule,
     AppComponent,
+    AgRegionsAndProductsComponent,
   ],
 })
 export class AppComponent {
@@ -77,6 +81,15 @@ export class AppComponent {
   shipData = SHIP_DATA;
   foodData = FOOD_DATA;
   productData = PRODUCT_TREE;
+
+  @ViewChild('s1', { static: true })
+  s1?: ShipsAndBrandsComponent;
+
+  @ViewChild('s2', { static: true })
+  s2?: ShipsAndBrandsComponent;
+
+  @ViewChild('s3', { static: true })
+  s3?: ShipsAndBrandsComponent;
 
   onChange(data: FlatTreeNode<{ name: string }>[]) {
     console.table(data);
@@ -87,4 +100,10 @@ export class AppComponent {
   filterValues() {}
 
   searchValue: string = '';
+
+  clear() {
+    this.s1?.clear();
+    this.s2?.clear();
+    this.s3?.clear();
+  }
 }

@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import 'ag-grid-enterprise';
 import { Ship, shipsData } from './data';
 import { AgTreeSelectComponent } from '../ag-tree-select/ag-tree-select.component';
@@ -20,12 +27,15 @@ export class ShipsAndBrandsComponent {
   @Output()
   onSelectedShips = new EventEmitter<Ship[]>();
 
+  @ViewChild(AgTreeSelectComponent, { static: true })
+  treeSelect?: AgTreeSelectComponent<Ship>;
+
   rowData = of(shipsData);
   getDataPath = (data: Ship) => data.brand;
 
   onRowSelectionChange = (ships: Ship[]) => {
-    console.log(ships);
-
     this.onSelectedShips.emit(ships);
   };
+
+  public clear = () => this.treeSelect?.deselectAll();
 }

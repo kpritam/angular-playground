@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  computed,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { FloatLabelType } from '@angular/material/form-field';
 
 const headerClass = 'tree-select-header';
 const rowClass = 'tree-select-row';
@@ -61,6 +63,9 @@ export class AgTreeSelectComponent<T extends TreeNode> {
   private gridApi?: GridApi<T>;
   searchControl = new FormControl('');
   dropdownPlaceholder = signal('');
+  floatLabel = computed<FloatLabelType>(() =>
+    this.dropdownPlaceholder().length > 0 ? 'always' : 'auto',
+  );
 
   defaultColDef: ColDef = {
     flex: 1,
@@ -85,13 +90,6 @@ export class AgTreeSelectComponent<T extends TreeNode> {
   }
 
   gridOptions?: GridOptions;
-  printSelected() {
-    console.log('Rows');
-    console.log(this.gridApi?.getSelectedRows());
-
-    console.log('Nodes');
-    console.log(this.gridApi?.getSelectedNodes());
-  }
 
   ngOnInit(): void {
     this.gridOptions = {
@@ -120,6 +118,10 @@ export class AgTreeSelectComponent<T extends TreeNode> {
       onSelectionChanged: () => this.onSelectionChanged(),
     };
   }
+
+  public deselectAll = () => {
+    this.gridApi?.deselectAll();
+  };
 
   onSelectionChanged = () => {
     const selectedRows = this.gridApi?.getSelectedRows();

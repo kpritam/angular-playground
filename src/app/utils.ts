@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { TreeNode } from './components/tree-select/tree-select.model';
 
-type FlatNode = {
+export type Product = {
   region: string;
   subProduct: string;
   mainProduct: string;
@@ -19,7 +19,7 @@ export type TreeNodeData = {
   name: string;
 };
 
-const flatNodes: FlatNode[] = [
+export const flatProduts: Product[] = [
   {
     region: 'Region A',
     subProduct: 'SubProduct 1',
@@ -42,7 +42,7 @@ const flatNodes: FlatNode[] = [
   },
 ];
 
-const groupByRegionThenSubProduct = (nodes: FlatNode[]): ProductTree[] =>
+const groupByRegionThenSubProduct = (nodes: Product[]): ProductTree[] =>
   _.chain(nodes)
     .groupBy('region')
     .map((subProducts, region) => ({
@@ -57,7 +57,7 @@ const groupByRegionThenSubProduct = (nodes: FlatNode[]): ProductTree[] =>
     }))
     .value();
 
-const productData = groupByRegionThenSubProduct(flatNodes);
+const productData = groupByRegionThenSubProduct(flatProduts);
 
 const convertToTreeNode = (tree: ProductTree[]): TreeNode<TreeNodeData>[] =>
   _.map(tree, (node) => ({

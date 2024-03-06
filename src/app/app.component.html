@@ -1,20 +1,23 @@
 <div class="app-container">
-  <ships-and-brands></ships-and-brands>
-  <ships-and-brands class="ships-dropdown" [showDropdown]="true"></ships-and-brands>
-  <!-- <div>
+  <ships-and-brands #s1></ships-and-brands>
+  <ships-and-brands class="ships-dropdown" [showDropdown]="true" #s2></ships-and-brands>
+  <ag-regions-and-products #s3></ag-regions-and-products>
+</div>
+<button mat-raised-button color="primary" (click)="clear()">Clear</button>
+<!-- <div>
     <h2>Ships & Brands</h2>
     <app-tree-select [data]="shipData" (selectionChange)="onChange($event)"></app-tree-select>
   </div> -->
-  <!-- <div>
+<!-- <div>
     <h2>Food</h2>
     <app-tree-select [data]="foodData" (selectionChange)="onChange($event)"></app-tree-select>
   </div> -->
 
-  <!-- <app-tree-select [data]="productData" (selectionChange)="onChange($event)"></app-tree-select> -->
+<!-- <app-tree-select [data]="productData" (selectionChange)="onChange($event)"></app-tree-select> -->
 
-  <!-- <h1>Dropdown</h1> -->
+<!-- <h1>Dropdown</h1> -->
 
-  <!-- <div class="tree-dropdown">
+<!-- <div class="tree-dropdown">
     <mat-form-field appearance="outline" class="tree-select-dropdown">
       <mat-label>Food</mat-label>
       <mat-select panelWidth="300px">
@@ -33,4 +36,4 @@
       </mat-select>
     </mat-form-field>
   </div> -->
-</div>
+<!-- </div> -->
